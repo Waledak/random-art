@@ -1,56 +1,38 @@
-import React from 'react';
-import './DisplayArt.css';
-export default class DisplayArt extends React.Component{
-  constructor(props){
-    super(props)
-    this.state={
-      img: props.primaryImageSmall,
-      ObjectTitle: props.title,
-      period: props.period,
-      artistName: props.artistDisplayName,
-      dimensions: props.dimensions,
-      nationality: props.artistNationality,
-      birthYear: props.artistBeginDate,
-      deathYear: props.artistEndDate,
+import React from "react";
+import "./DisplayArt.css";
 
-    }
-  }
-  
-  render(){
-    return(
+const DisplayArt = ({ objectToDisplay }) => {
+  return (
     <div className="container-art">
       <div className="container-img">
-        <img src={this.state.img} alt=""/>
+        <img src={objectToDisplay.primaryImageSmall} alt="" />
       </div>
       <div className="container-table">
-        
-          <table>
-            <thead>
-              <tr>
-                <th colSpan="2">About the work of art</th>     
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Title:</td>
-                <td>{this.state.ObjectTitle}</td>
-              </tr>
-              <tr>
-                <td>Period:</td>
-                <td>{this.state.period}</td>
-              </tr>
-              <tr>
-                <td>Size: </td>
-                <td>{this.state.dimensions}</td>
-              </tr>
-              <tr>
-                <td>Style: </td>
-                <td>{this.state.dimensions}eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</td>
-              </tr>
-            </tbody>
-          </table>
-        
-          
+        <table>
+          <thead>
+            <tr>
+              <th colSpan="2">About the work of art</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>title:</td>
+              <td>{objectToDisplay.title}</td>
+            </tr>
+            <tr>
+              <td>Period:</td>
+              <td>{objectToDisplay.period}</td>
+            </tr>
+            <tr>
+              <td>Size: </td>
+              <td>{objectToDisplay.dimensions}</td>
+            </tr>
+            <tr>
+              <td>Style: </td>
+              <td>{objectToDisplay.department}</td>
+            </tr>
+          </tbody>
+        </table>
         <table>
           <thead>
             <tr>
@@ -60,21 +42,24 @@ export default class DisplayArt extends React.Component{
           <tbody>
             <tr>
               <td>Name:</td>
-              <td> {this.state.artistName}</td>
+              <td> {objectToDisplay.artistDisplayName}</td>
             </tr>
             <tr>
               <td>Nationality:</td>
-              <td>{this.state.nationality}</td>
+              <td>{objectToDisplay.artistNationality}</td>
             </tr>
             <tr>
-              <td>Date: </td>
-              <td>{this.state.birthYear} - {this.state.deathYear}</td>
+              <td>Date (Birth-Death): </td>
+              <td>
+                {objectToDisplay.artistBeginDate} -{" "}
+                {objectToDisplay.artistEndDate}
+              </td>
             </tr>
           </tbody>
         </table>
       </div>
     </div>
-  )
-  }
-  
-}
+  );
+};
+
+export default DisplayArt;
