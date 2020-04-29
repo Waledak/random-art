@@ -1,7 +1,7 @@
 nav{
   display: flex;
   background-color: #e4002b;
-  height: 150px;
+  height: 10vh;
   position: fixed;
   width: 100%;
   top: 0;
@@ -15,6 +15,7 @@ nav div{
 nav div img{
   user-select: none;
   height: auto;
+  width: 9vh;
 }
 nav div:first-child{
   justify-content: flex-start;
