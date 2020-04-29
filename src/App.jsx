@@ -1,6 +1,7 @@
 import React from "react";
 import DepartementSelect from "./DepartementSelect";
 import PeriodSelect from "./PeriodSelect";
+import axios from "axios";
 import "./App.css";
 import DisplayArt from "./Display-art";
 import Carrousel from "./Carrousel";
@@ -91,6 +92,8 @@ class App extends React.Component {
     this.state = {
       departement: 0,
       period: "",
+      randomId: "40",
+      objectToDisplay: {},
     };
   }
 
@@ -102,9 +105,20 @@ class App extends React.Component {
     this.setState({ period: e.target.value });
   };
 
+  handleRandom = () => {
+    const id = toString(Math.floor(Math.random() * Math.floor(30000)));
+    axios
+      .get(
+        `https://collectionapi.metmuseum.org/public/collection/v1/objects/${id}`
+      )
+      .then((res) => res.data)
+      .then((res) => this.setState({ objectToDisplay: res }));
+  };
+
   render() {
     return (
       <div className="App">
+        <button onClick={this.handleRandom}>TEST</button>
         <header>
           <DepartementSelect
             departement={this.state.departement}
@@ -116,7 +130,10 @@ class App extends React.Component {
           />
         </header>
         <article>
-          <DisplayArt {...artData} />
+          <DisplayArt
+            {...artData}
+            img={this.state.objectToDisplay.primaryImageSmall}
+          />
         </article>
         <Carrousel />
         <footer></footer>
