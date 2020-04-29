@@ -67,7 +67,6 @@ const DisplayArt = ({ objectToDisplay }) => {
                   :objectToDisplay.artistEndDate!==""
                   ?objectToDisplay.artistEndDate
                   :"Unknown data"
-
                 }
               </td>
             </tr>

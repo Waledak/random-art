@@ -1,10 +1,9 @@
 import React from "react";
-import DepartementSelect from "./DepartementSelect";
-import PeriodSelect from "./PeriodSelect";
 import axios from "axios";
 import "./App.css";
 import DisplayArt from "./Display-art";
 import Carrousel from "./Carrousel";
+import { Navbar } from "./navbar";
 
 // const artData = {
 //   objectID: 45734,
@@ -170,17 +169,15 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <button onClick={this.handleRandom}>
+        {/* <button onClick={this.handleRandom}>
           Random parmis {this.state.departementAndPeriodIds.total} to display
-        </button>
+        </button> */}
         <header>
-          <DepartementSelect
-            departement={this.state.departement}
-            handleDepartement={this.handleDepartement}
-          />
-          <PeriodSelect
-            peiod={this.state.period}
+          <Navbar
+            handleRandom={this.handleRandom}
             handlePeriod={this.handlePeriod}
+            handleDepartement={this.handleDepartement}
+            {...this.state}
           />
         </header>
         <article>
