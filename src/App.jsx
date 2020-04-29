@@ -1,4 +1,6 @@
-import React  from 'react';
+import React from "react";
+import DepartementSelect from "./DepartementSelect";
+import PeriodSelect from "./PeriodSelect";
 import "./App.css";
 import DisplayArt from "./Display-art";
 
@@ -84,7 +86,8 @@ function App() {
   return( 
   <div className="App">
     <header>
-
+      <DepartementSelect />
+      <PeriodSelect />
     </header>
     <article>
       <DisplayArt {...artData}/>
