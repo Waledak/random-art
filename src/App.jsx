@@ -4,6 +4,7 @@ import "./App.css";
 import DisplayArt from "./Display-art";
 import Carrousel from "./Carrousel";
 import { Navbar } from "./navbar";
+import BodyLoading from "./BodyLoading";
 
 // const artData = {
 //   objectID: 45734,
@@ -91,11 +92,19 @@ class App extends React.Component {
     this.state = {
       departement: "",
       period: "",
+      oldObjectDisplay:{},
       objectToDisplay: {},
       departementAndPeriodIds: {},
     };
   }
-
+  componentDidUpdate(){
+    if(this.state.oldObjectDisplay!==this.state.objectToDisplay){
+      this.setState({oldObjectDisplay: this.state.objectToDisplay})
+    }
+  }
+  componentDidMount(){
+    this.handleRandom()
+  }
   handleDepartement = (e) => {
     this.setState({ departement: e.target.value });
     const splitDates = this.state.period.split(" ");
@@ -147,7 +156,7 @@ class App extends React.Component {
             this.setState({ objectToDisplay: res });
           }
         })
-        .catch((error) => {
+        .catch(() => {
           this.handleRandom();
         });
     } else {
@@ -178,9 +187,10 @@ class App extends React.Component {
             {...this.state}
           />
         </header>
-        <article>
-          <DisplayArt objectToDisplay={this.state.objectToDisplay} />
-        </article>
+        {this.state.oldObjectDisplay!==this.state.objectToDisplay?
+          <BodyLoading />
+          :<DisplayArt objectToDisplay={this.state.objectToDisplay} />
+        }
         <Carrousel />
         <footer></footer>
       </div>

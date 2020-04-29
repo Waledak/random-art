@@ -1,7 +1,11 @@
 nav{
   display: flex;
   background-color: #e4002b;
-  height: 150px;
+  height: 10vh;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  box-shadow: 0px 2px 10px black;
 }
 nav div{
   display: flex;
@@ -11,6 +15,7 @@ nav div{
 nav div img{
   user-select: none;
   height: auto;
+  width: 9vh;
 }
 nav div:first-child{
   justify-content: flex-start;
@@ -23,4 +28,15 @@ nav div:last-child{
 nav div div{
   width: fit-content;
   margin-right: 20px;
+}
+nav div select{
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  border: none;
+  width: 200px;
+  border-radius: 5px;
+  padding: 5px;
+  background-color: rgb(50, 50, 50);
+  color: rgb(237, 237, 248);
 }

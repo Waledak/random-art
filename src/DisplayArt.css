@@ -2,9 +2,19 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: auto;
-  margin-bottom: auto;
+  margin-top: 15vh;
   flex-direction: column;
+}
+.container-img{
+  width:1045px;
+  height: 500px;
+  display:flex;
+  justify-content: center;
+}
+.container-img img{
+  max-width:100%;
+  max-height: 100%;
+  min-height: 100%;
 }
 .container-table{
   display: flex;
@@ -19,6 +29,9 @@
 @media screen and (max-width: 1044px){
   .container-table table:first-child{
     margin-right: 0px;
+  }
+  .container-img{
+    width:510px;
   }
 }
 .container-table div{

@@ -3,7 +3,7 @@ import "./DisplayArt.css";
 
 const DisplayArt = ({ objectToDisplay }) => {
   return (
-    <div className="container-art">
+    <article className="container-art">
       <div className="container-img">
         <img src={objectToDisplay.primaryImageSmall} alt="" />
       </div>
@@ -73,7 +73,7 @@ const DisplayArt = ({ objectToDisplay }) => {
           </tbody>
         </table>
       </div>
-    </div>
+    </article>
   );
 };
 

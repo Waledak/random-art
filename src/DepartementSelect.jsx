@@ -10,7 +10,7 @@ const DepartementSelect = ({ departement, handleDepartement }) => {
           value={departement}
           id="pet-select"
         >
-          <option value="">--Please choose an departement--</option>
+          <option value="">choose a departement</option>
           <option value="American Decorative Arts">
             American Decorative Arts
           </option>
