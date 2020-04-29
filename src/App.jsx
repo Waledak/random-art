@@ -106,7 +106,7 @@ class App extends React.Component {
   };
 
   handleRandom = () => {
-    const id = toString(Math.floor(Math.random() * Math.floor(30000)));
+    const id = Math.floor(Math.random() * 30000);
     axios
       .get(
         `https://collectionapi.metmuseum.org/public/collection/v1/objects/${id}`
