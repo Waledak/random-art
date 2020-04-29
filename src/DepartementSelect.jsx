@@ -1,10 +1,15 @@
 import React from "react";
 
-const DepartementSelect = () => {
+const DepartementSelect = ({ departement, handleDepartement }) => {
   return (
     <div>
-      <label for="departement-select">Choose a departement:</label>
-      <select name="departement" id="pet-select">
+      <label htmlFor="departement-select">Choose a departement:</label>
+      <select
+        onChange={handleDepartement}
+        name="departement"
+        value={departement}
+        id="pet-select"
+      >
         <option value="">--Please choose an departement--</option>
         <option value="1">American Decorative Arts</option>
         <option value="3">Ancient Near Eastern Art</option>
