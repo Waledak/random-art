@@ -10,7 +10,7 @@ const PeriodSelect = ({ period, handlePeriod }) => {
           value={period}
           id="period-select"
         >
-          <option value="">--Please choose an departement--</option>
+          <option value="">--Period--</option>
           <option value="-50000 -3000">La Préhistoire</option>
           <option value="-3000 476">L'Antiquité</option>
           <option value="476 1492">Le Moyen-Age</option>

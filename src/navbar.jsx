@@ -10,6 +10,7 @@ export const Navbar = ({
   handlePeriod,
   handleDepartement,
   departementAndPeriodIds,
+  loading1,
 }) => {
   return (
     <nav>
@@ -17,6 +18,12 @@ export const Navbar = ({
         <img src="./LogoBlanc2.png" alt="Logo du site" />
       </div>
       <div>
+        <div class={loading1 ? "lds-ring" : ""}>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
         <DepartementSelect
           departement={departement}
           handleDepartement={handleDepartement}
