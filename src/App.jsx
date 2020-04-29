@@ -169,14 +169,12 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        {/* <button onClick={this.handleRandom}>
-          Random parmis {this.state.departementAndPeriodIds.total} to display
-        </button> */}
         <header>
           <Navbar
             handleRandom={this.handleRandom}
             handlePeriod={this.handlePeriod}
             handleDepartement={this.handleDepartement}
+            departementAndPeriodIds={this.state.departementAndPeriodIds.total}
             {...this.state}
           />
         </header>
