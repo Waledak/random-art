@@ -57,7 +57,6 @@ export default class Carrousel extends React.Component {
   //   });
 
   render() {
-    console.log('finaleuh',this.state.objects)
     return (
       <div className="carrousel">
           {this.state.isLoading ? (

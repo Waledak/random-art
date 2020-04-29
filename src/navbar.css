@@ -2,6 +2,9 @@ nav{
   display: flex;
   background-color: #e4002b;
   height: 150px;
+  position: fixed;
+  width: 100%;
+  top: 0;
 }
 nav div{
   display: flex;
@@ -23,4 +26,15 @@ nav div:last-child{
 nav div div{
   width: fit-content;
   margin-right: 20px;
+}
+nav div select{
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.9rem;
+  border: none;
+  width: 200px;
+  border-radius: 5px;
+  padding: 5px;
+  background-color: rgb(50, 50, 50);
+  color: rgb(237, 237, 248);
 }

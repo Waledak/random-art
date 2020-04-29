@@ -96,7 +96,9 @@ class App extends React.Component {
       periodIds: {},
     };
   }
-
+  componentDidMount(){
+    this.handleRandom()
+  }
   handleDepartement = (e) => {
     this.setState({ departement: e.target.value });
     axios
@@ -158,13 +160,12 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        
         <header>
           <Navbar handleRandom={this.handleRandom} handlePeriod={this.handlePeriod} handleDepartement={this.handleDepartement} {...this.state}/>
         </header>
-        <article>
-          <DisplayArt objectToDisplay={this.state.objectToDisplay} />
-        </article>
+        
+        <DisplayArt objectToDisplay={this.state.objectToDisplay} />
+        
         <Carrousel />
         <footer></footer>
       </div>
