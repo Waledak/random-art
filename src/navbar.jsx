@@ -4,6 +4,7 @@ import DepartementSelect from "./DepartementSelect";
 import PeriodSelect from "./PeriodSelect";
 
 export const Navbar = ({handleRandom, period, departement, handlePeriod, handleDepartement}) => {
+
   return(
     <nav>
       <div>
