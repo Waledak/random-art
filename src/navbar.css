@@ -1,4 +1,4 @@
-nav{
+nav {
   display: flex;
   background-color: #e4002b;
   height: 10vh;
@@ -7,31 +7,31 @@ nav{
   top: 0;
   box-shadow: 0px 2px 10px black;
 }
-nav div{
+nav div {
   display: flex;
   align-items: center;
   width: 100%;
 }
-nav div img{
+nav div img {
   user-select: none;
   height: auto;
   width: 9vh;
 }
-nav div:first-child{
+nav div:first-child {
   justify-content: flex-start;
   margin-left: 30px;
 }
-nav div:last-child{
+nav div:last-child {
   justify-content: flex-end;
   margin-right: 30px;
 }
-nav div div{
+nav div div {
   width: fit-content;
   margin-right: 20px;
 }
-nav div select{
+nav div select {
   cursor: pointer;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 1rem;
   border: none;
   width: 200px;

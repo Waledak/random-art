@@ -95,6 +95,7 @@ class App extends React.Component {
       oldObjectDisplay:{},
       objectToDisplay: {},
       departementAndPeriodIds: {},
+      loading1: false,
     };
   }
   componentDidUpdate(){
@@ -106,43 +107,46 @@ class App extends React.Component {
     this.handleRandom()
   }
   handleDepartement = (e) => {
+    this.setState({ loading1: true });
     this.setState({ departement: e.target.value });
     const splitDates = this.state.period.split(" ");
     axios
       .get(
-        `https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&departmentId=${
-          e.target.value
-        }${
+        `https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true${
           this.state.period !== ""
             ? `&dateBegin=${splitDates[0]}&dateEnd=${splitDates[1]}`
             : ""
-        }&q=b`
+        }&departmentId=${e.target.value}&q=b`
       )
       .then((res) => res.data)
       .then((res) => {
-        this.setState({ departementAndPeriodIds: res });
+        this.setState({ departementAndPeriodIds: res, loading1: false });
       });
   };
 
   handlePeriod = (e) => {
+    this.setState({ loading1: true });
     this.setState({ period: e.target.value });
     const splitDates = e.target.value.split(" ");
     axios
       .get(
-        `https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&${
+        `https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true${
           this.state.departement !== ""
-            ? `departementId=${this.state.departement}`
+            ? `&departementId=${this.state.departement}`
             : ""
         }&dateBegin=${splitDates[0]}&dateEnd=${splitDates[1]}&q=b`
       )
       .then((res) => res.data)
       .then((res) => {
-        this.setState({ departementAndPeriodIds: res });
+        this.setState({ departementAndPeriodIds: res, loading1: false });
       });
   };
 
   handleRandom = () => {
-    if (this.state.departement === "" && this.state.period === "") {
+    if (
+      (this.state.departement === "" && this.state.period === "") ||
+      !this.state.departementAndPeriodIds.objectIDs
+    ) {
       const randomId = Math.floor(Math.random() * 300000);
       axios
         .get(
@@ -150,9 +154,10 @@ class App extends React.Component {
         )
         .then((res) => res.data)
         .then((res) => {
-          if (res.primaryImageSmall === "" || res.title === "") {
+          if (res.primaryImageSmall === "") {
             this.handleRandom();
           } else {
+            console.log("okk");
             this.setState({ objectToDisplay: res });
           }
         })
@@ -170,6 +175,7 @@ class App extends React.Component {
         )
         .then((res) => res.data)
         .then((res) => {
+          console.log("wesh");
           this.setState({ objectToDisplay: res });
         });
     }
@@ -184,6 +190,7 @@ class App extends React.Component {
             handlePeriod={this.handlePeriod}
             handleDepartement={this.handleDepartement}
             departementAndPeriodIds={this.state.departementAndPeriodIds.total}
+            loading1={this.state.loading1}
             {...this.state}
           />
         </header>

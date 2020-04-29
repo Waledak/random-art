@@ -3,14 +3,14 @@ import React from "react";
 const PeriodSelect = ({ period, handlePeriod }) => {
   return (
     <div>
-      <label  htmlFor="period-select">
-        <select 
+      <label htmlFor="period-select">
+        <select
           onChange={handlePeriod}
           name="period"
           value={period}
           id="period-select"
         >
-          <option value="">choose a period</option>
+          <option value="">--Period--</option>
           <option value="-50000 -3000">La Préhistoire</option>
           <option value="-3000 476">L'Antiquité</option>
           <option value="476 1492">Le Moyen-Age</option>
