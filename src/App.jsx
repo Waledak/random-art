@@ -99,6 +99,14 @@ class App extends React.Component {
 
   handleDepartement = (e) => {
     this.setState({ departement: e.target.value });
+    axios
+      .get(
+        `https://collectionapi.metmuseum.org/public/collection/v1/search?departmentId=${e.target.value}&q=b`
+      )
+      .then((res) => res.data)
+      .then((res) => {
+        this.setState({ departementIds: res });
+      });
   };
 
   handlePeriod = (e) => {
@@ -106,22 +114,45 @@ class App extends React.Component {
   };
 
   handleRandom = () => {
-    const randomId = Math.floor(Math.random() * 300000);
-    axios
-      .get(
-        `https://collectionapi.metmuseum.org/public/collection/v1/objects/${randomId}`
-      )
-      .then((res) => res.data)
-      .then((res) => {
-        if (res.primaryImageSmall === "" || res.title === "") {
+    if (this.state.departement === "") {
+      const randomId = Math.floor(Math.random() * 300000);
+      axios
+        .get(
+          `https://collectionapi.metmuseum.org/public/collection/v1/objects/${randomId}`
+        )
+        .then((res) => res.data)
+        .then((res) => {
+          if (res.primaryImageSmall === "" || res.title === "") {
+            this.handleRandom();
+          } else {
+            this.setState({ objectToDisplay: res });
+          }
+        })
+        .catch((error) => {
           this.handleRandom();
-        } else {
-          this.setState({ objectToDisplay: res });
-        }
-      })
-      .catch((error) => {
-        this.handleRandom();
-      });
+        });
+    } else {
+      const random = Math.floor(
+        Math.random() * this.state.departementIds.total
+      );
+      const id = this.state.departementIds.objectIDs[random];
+      console.log(id);
+      axios
+        .get(
+          `https://collectionapi.metmuseum.org/public/collection/v1/objects/${id}`
+        )
+        .then((res) => res.data)
+        .then((res) => {
+          if (res.primaryImageSmall === "" || res.title === "") {
+            this.handleRandom();
+          } else {
+            this.setState({ objectToDisplay: res });
+          }
+        })
+        .catch((error) => {
+          this.handleRandom();
+        });
+    }
   };
 
   render() {
