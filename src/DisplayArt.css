@@ -1,10 +1,49 @@
 .container-art{
   display: flex;
   justify-content: center;
-  text-align: center;
   align-items: center;
+  margin-top: auto;
+  margin-bottom: auto;
   flex-direction: column;
 }
 .container-table{
   display: flex;
+
+}
+.container-table table:first-child{
+  margin-right: 25px;
+}
+table{
+  margin-top: 25px;
+  margin-bottom: 25px;
+  border-collapse: collapse;
+  min-width: 300px;
+  width: fit-content;
+}
+.container-table table thead tr th{
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 1.4rem;
+  text-align: center;
+  background-color: #e4002b;
+  color: rgb(237, 237,248);
+}
+/*tbody tr:nth-child(1){
+  border-top: 1px solid black;
+}*/
+
+.container-table table th, 
+.container-table table td{
+  padding: 12px 15px;
+}
+.container-table table tbody td{
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 1.2rem;
+}
+.container-table table tbody tr:nth-child(even){
+  background-color: #dfdfdf;
+}
+.container-table table tbody tr:last-of-type{
+  border-bottom: 2px solid #e4002b;
 }

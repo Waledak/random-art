@@ -30,7 +30,7 @@ export default class DisplayArt extends React.Component{
           </thead>
           <tbody>
             <tr>
-              <td>title:</td>
+              <td>Title:</td>
               <td>{this.state.ObjectTitle}</td>
             </tr>
             <tr>
@@ -45,7 +45,9 @@ export default class DisplayArt extends React.Component{
         </table>
         <table>
           <thead>
-            <th colSpan="2">About the artist</th>
+            <tr>
+              <th colSpan="2">About the artist</th>
+            </tr>
           </thead>
           <tbody>
             <tr>
