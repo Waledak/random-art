@@ -4,7 +4,7 @@ export default class DisplayArt extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      img: props.primaryImageSmall,
+      // img: props.primaryImageSmall,
       ObjectTitle: props.title,
       period: props.period,
       artistName: props.artistDisplayName,
@@ -18,7 +18,7 @@ export default class DisplayArt extends React.Component {
     return (
       <div className="container-art">
         <div className="container-img">
-          <img src={this.state.img} alt="" />
+          <img src={this.props.img} alt="" />
         </div>
         <div className="container-table">
           <table>
@@ -29,7 +29,7 @@ export default class DisplayArt extends React.Component {
             </thead>
             <tbody>
               <tr>
-                <td>Title:</td>
+                <td>title:</td>
                 <td>{this.state.ObjectTitle}</td>
               </tr>
               <tr>

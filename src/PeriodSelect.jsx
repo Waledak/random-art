@@ -1,10 +1,15 @@
 import React from "react";
 
-const PeriodSelect = () => {
+const PeriodSelect = ({ period, handlePeriod }) => {
   return (
     <div>
-      <label for="period-select">Choose a period:</label>
-      <select name="period" id="period-select">
+      <label htmlFor="period-select">Choose a period:</label>
+      <select
+        onChange={handlePeriod}
+        name="period"
+        value={period}
+        id="period-select"
+      >
         <option value="">--Please choose an departement--</option>
         <option value="-50000 -3000">La Préhistoire</option>
         <option value="-3000 476">L'Antiquité</option>
