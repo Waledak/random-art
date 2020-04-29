@@ -7,4 +7,5 @@ body {
   padding: 0;
   box-sizing: border-box;
   background-color: rgb(237, 237, 248);
+  min-height: 100vh;
 }
