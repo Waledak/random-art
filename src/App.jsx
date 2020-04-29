@@ -3,6 +3,7 @@ import DepartementSelect from "./DepartementSelect";
 import PeriodSelect from "./PeriodSelect";
 import "./App.css";
 import DisplayArt from "./Display-art";
+import Carrousel from "./Carrousel";
 
 const artData = {
   "objectID": 45734,
@@ -92,6 +93,7 @@ function App() {
     <article>
       <DisplayArt {...artData}/>
     </article>
+    <Carrousel />
     <footer>
       
     </footer>
