@@ -1,8 +1,39 @@
 
 
 .InfiniteCarousel {
-    width: 50%;
+    width: 70%;
     margin-right: auto;
     margin-left: auto;
     margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.InfiniteCarouselSlide {
+    height: 100%!important;
+}
+
+.carrousel-img {
+    transition: all 0.3s ease;
+    height: 200px;
+    opacity: 0.6;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.carrousel-img:hover {
+    cursor: pointer;
+    -moz-transform: scale(1.06);
+    -webkit-transform: scale(1.06);
+    transform: scale(1.06);
+    opacity: 1;
+    color: white;
+}
+
+.InfiniteCarouselArrowIcon {
+    border-right: solid #e4002b;
+    border-bottom: solid #e4002b;
+}
+
+.InfiniteCarouselDotIcon {
+    background-color: #e4002b;
 }
