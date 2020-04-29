@@ -8,17 +8,36 @@
 }
 .container-table{
   display: flex;
-
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-direction: row;
+  width: 100%;
 }
 .container-table table:first-child{
   margin-right: 25px;
+}
+@media screen and (max-width: 1044px){
+  .container-table table:first-child{
+    margin-right: 0px;
+  }
+}
+.container-table div{
+  width: 100%;
 }
 table{
   margin-top: 25px;
   margin-bottom: 25px;
   border-collapse: collapse;
-  min-width: 300px;
   width: fit-content;
+  display: block;
+  table-layout: fixed;
+  overflow-wrap: break-word;
+}
+table, th, td{
+  display: block;
+}
+.container-table table tr{
+  overflow-wrap: break-word;
 }
 .container-table table thead tr th{
   font-family: 'Roboto', sans-serif;
@@ -36,10 +55,20 @@ table{
 .container-table table td{
   padding: 12px 15px;
 }
+.container-table table tbody tr{
+  display: flex;
+}
 .container-table table tbody td{
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
+  overflow-wrap: break-word;
   font-size: 1.2rem;
+}
+.container-table table tbody tr td:last-child{
+  width: 300px;
+}
+.container-table table tbody tr td:first-child{
+  width: 150px;
 }
 .container-table table tbody tr:nth-child(even){
   background-color: #dfdfdf;

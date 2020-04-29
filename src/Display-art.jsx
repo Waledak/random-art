@@ -15,6 +15,7 @@ export default class DisplayArt extends React.Component{
 
     }
   }
+  
   render(){
     return(
     <div className="container-art">
@@ -22,27 +23,34 @@ export default class DisplayArt extends React.Component{
         <img src={this.state.img} alt=""/>
       </div>
       <div className="container-table">
-        <table>
-          <thead>
-            <tr>
-              <th colSpan="2">About the work of art</th>     
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Title:</td>
-              <td>{this.state.ObjectTitle}</td>
-            </tr>
-            <tr>
-              <td>Period:</td>
-              <td>{this.state.period}</td>
-            </tr>
-            <tr>
-              <td>Size: </td>
-              <td>{this.state.dimensions}</td>
-            </tr>
-          </tbody>
-        </table>
+        
+          <table>
+            <thead>
+              <tr>
+                <th colSpan="2">About the work of art</th>     
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Title:</td>
+                <td>{this.state.ObjectTitle}</td>
+              </tr>
+              <tr>
+                <td>Period:</td>
+                <td>{this.state.period}</td>
+              </tr>
+              <tr>
+                <td>Size: </td>
+                <td>{this.state.dimensions}</td>
+              </tr>
+              <tr>
+                <td>Style: </td>
+                <td>{this.state.dimensions}eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</td>
+              </tr>
+            </tbody>
+          </table>
+        
+          
         <table>
           <thead>
             <tr>
@@ -59,7 +67,7 @@ export default class DisplayArt extends React.Component{
               <td>{this.state.nationality}</td>
             </tr>
             <tr>
-              <td>Date (Birth-Death): </td>
+              <td>Date: </td>
               <td>{this.state.birthYear} - {this.state.deathYear}</td>
             </tr>
           </tbody>
