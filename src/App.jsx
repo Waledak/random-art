@@ -136,19 +136,6 @@ class App extends React.Component {
     }
   };
 
-  handleClick = (imageSelect) => {
-    const id = this.state.imageSelect.objectIDs;
-    this.setState({imageSelect: imageSelect})
-    axios
-        .get(
-          `https://collectionapi.metmuseum.org/public/collection/v1/objects/${id}`
-        )
-        .then((res) => res.data)
-        .then((res) => {
-          this.setState({ objectToDisplay: res});
-        });
-  }
-
   render() {
     return (
       <div className="App">
@@ -166,10 +153,7 @@ class App extends React.Component {
           objectToDisplay={this.state.objectToDisplay}
           loading2={this.state.loading2}
         />
-        <Carrousel 
-          handleClick={this.handleClick}
-          imageSelect={this.state.imageSelect}
-        />
+        <Carrousel />
         <footer></footer>
       </div>
     );

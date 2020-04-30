@@ -8,7 +8,7 @@ export default class Carrousel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      departmentId: "7",
+      departmentId: "9",
       objects: [],
       ImageSmall: "",
       isLoading: true,
@@ -88,8 +88,8 @@ export default class Carrousel extends React.Component {
             slidesToScroll={4}
             slidesToShow={4}
             scrollOnDevice={true}
-            // autoCycle={true}
-            // cycleInterval={2200}
+            autoCycle={true}
+            cycleInterval={2200}
           >
             {this.state.objects
               .filter((object) => {
