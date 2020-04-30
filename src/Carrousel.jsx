@@ -8,7 +8,7 @@ export default class Carrousel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      departmentId: '7',
+      departmentId: '4',
       objects: [],
       ImageSmall: '',
       isLoading: true,
@@ -18,16 +18,15 @@ export default class Carrousel extends React.Component {
 
   componentDidMount() {
     this.loadObjectId();
-    
   }
 
   loadObjectId() {
-    const linksArr = metAPI.getIds(this.state.departmentId, 20);
+    const linksArr = metAPI.getIds(this.state.departmentId, 30);
     let promiseArr = linksArr.map((l) => fetch(l).then((res) => res.json()));
     Promise.all(promiseArr).then((res) => {
       this.setState({
         objects: res,
-        isLoading: false
+        isLoading: false,
       });
     });
   }
@@ -57,50 +56,59 @@ export default class Carrousel extends React.Component {
   //   });
 
   render() {
-    console.log('finaleuh',this.state.objects)
+    console.log('finaleuh', this.state.objects);
     return (
       <div className="carrousel">
-          {this.state.isLoading ? (
-            <div>
+        {this.state.isLoading ? (
+          <div>
             <Spinner style={{ width: '3rem', height: '3rem' }} />
-            </div>
-          ) : (
-            <InfiniteCarousel
-        breakpoints={[
-          {
-            breakpoint: 500,
-            settings: {
-              slidesToShow: 2,
-              slidesToScroll: 2,
-            },
-          },
-          {
-            breakpoint: 768,
-            settings: {
-              slidesToShow: 5,
-              slidesToScroll: 5,
-            },
-          },
-        ]}
-        dots={true}
-        showSides={true}
-        sidesOpacity={0.5}
-        sideSize={0.1}
-        slidesToScroll={4}
-        slidesToShow={4}
-        scrollOnDevice={true}
-      >
-            {this.state.objects.filter(object => {return object.primaryImageSmall !== ""}).map(object => (
-              <div key={object.objectID} className="container-image">
-            <img
-              className="carrousel-img"
-              alt={object.objectName}
-              src={object.primaryImageSmall}
-            />
           </div>
-          ))}
-        </InfiniteCarousel>
-          )}
+        ) : (
+          <InfiniteCarousel
+            breakpoints={[
+              {
+                breakpoint: 500,
+                settings: {
+                  slidesToShow: 2,
+                  slidesToScroll: 2,
+                },
+              },
+              {
+                breakpoint: 768,
+                settings: {
+                  slidesToShow: 5,
+                  slidesToScroll: 5,
+                },
+              },
+            ]}
+            dots={true}
+            showSides={true}
+            sidesOpacity={0.5}
+            sideSize={0.1}
+            slidesToScroll={4}
+            slidesToShow={4}
+            scrollOnDevice={true}
+            autoCycle={true}
+            cycleInterval={2200}
+          >
+            {this.state.objects
+              .filter((object) => {
+                return object.primaryImageSmall !== '';
+              })
+              .map((object) => (
+                <div 
+                key={object.objectID} 
+                className="container-image"
+                >
+                  <img
+                    className="carrousel-img"
+                    alt={object.objectName}
+                    src={object.primaryImageSmall}
+                  />
+                </div>
+              ))}
+          </InfiniteCarousel>
+        )}
       </div>
     );
   }
