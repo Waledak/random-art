@@ -25,7 +25,7 @@ export const Footer = () =>{
        setResult({ success: false});
        Swal.fire({
         icon: 'success',
-        title: 'Your work has been saved',
+        title: 'Thanks for you\'r subscribe!',
         showConfirmButton: false,
         timer: 1000
       })

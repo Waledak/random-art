@@ -10,11 +10,11 @@ app.use(express.json());
 app.use(express.static(buildPath));
 app.post('/send', (req, res) => {
   try{
-    const mailOptions = {
-      from:process.env.email,
-      to:req.body.email,
+    const mailOptions = { 
+      from: process.env.email,
+      to: req.body.email,
       subject: "Travel Art IFTTT",
-      html: "Hi !\r\n\nThanks for following our IFTTT!\r\n\nYou will now receive a new work of art every weeks !"
+      text: "Hi !\r\n\nThanks for following our IFTTT!\r\n\nYou will now receive a new work of art every weeks !"
     }
     transporter.sendMail(mailOptions, function(err, info){
       if (err){
