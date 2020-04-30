@@ -25,9 +25,12 @@ export const Navbar = ({
           handleDepartement={handleDepartement}
         />
         <PeriodSelect period={period} handlePeriod={handlePeriod} />
-        <button onClick={handleRandom}>
-          Random Art nb: {departementAndPeriodIds.total}
-        </button>
+        <button onClick={handleRandom}>Random Art !</button>
+        {/* <p>
+          {departementAndPeriodIds.total === 0 || !departementAndPeriodIds
+            ? "Filter dont find"
+            : ""}
+        </p> */}
       </div>
     </nav>
   );
