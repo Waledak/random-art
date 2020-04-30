@@ -4,6 +4,7 @@ import "./App.css";
 import DisplayArt from "./Display-art";
 import Carrousel from "./Carrousel";
 import { Navbar } from "./navbar";
+import { Footer } from "./Footer";
 
 const alphabet = [
   "a",
@@ -40,18 +41,13 @@ class App extends React.Component {
     this.state = {
       departement: "",
       period: "",
-      // oldObjectDisplay: {},
       objectToDisplay: {},
       departementAndPeriodIds: {},
       loading1: false,
       loading2: false,
     };
   }
-  // componentDidUpdate() {
-  //   if (this.state.oldObjectDisplay !== this.state.objectToDisplay) {
-  //     this.setState({ oldObjectDisplay: this.state.objectToDisplay });
-  //   }
-  // }
+
   componentDidMount() {
     this.handleRandom();
   }
@@ -153,7 +149,7 @@ class App extends React.Component {
           loading2={this.state.loading2}
         />
         <Carrousel />
-        <footer></footer>
+        <Footer />
       </div>
     );
   }
