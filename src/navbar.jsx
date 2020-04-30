@@ -10,15 +10,16 @@ export const Navbar = ({
   departement,
   handlePeriod,
   handleDepartement,
-  departementAndPeriodIds,
   loading1,
 }) => {
   return (
     <nav>
-      <div>
+      <div className="logo-nav">
         <img src="./LogoBlanc2.png" alt="Logo du site" />
       </div>
-      {loading1 && <BodyLoading color={"white"} size={"small"} />}
+      <div className="navbar-loading">
+        {loading1 && <BodyLoading color={"white"} size={"small"} />}
+      </div>
       <div>
         <DepartementSelect
           departement={departement}
@@ -26,11 +27,6 @@ export const Navbar = ({
         />
         <PeriodSelect period={period} handlePeriod={handlePeriod} />
         <button onClick={handleRandom}>Random Art !</button>
-        {/* <p>
-          {departementAndPeriodIds.total === 0 || !departementAndPeriodIds
-            ? "Filter dont find"
-            : ""}
-        </p> */}
       </div>
     </nav>
   );
