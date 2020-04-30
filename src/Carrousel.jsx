@@ -21,7 +21,7 @@ export default class Carrousel extends React.Component {
   }
 
   loadObjectId() {
-    const linksArr = metAPI.getIds(this.state.departmentId, 20);
+    const linksArr = metAPI.getIds(this.state.departmentId, 30);
     let promiseArr = linksArr.map((l) => fetch(l).then((res) => res.json()));
     Promise.all(promiseArr).then((res) => {
       this.setState({
@@ -60,7 +60,8 @@ export default class Carrousel extends React.Component {
       <div className="carrousel">
         {this.state.isLoading ? (
           <div>
-            <Spinner style={{ width: "3rem", height: "3rem" }} />
+            <Spinner style={{ width: '3rem', height: '3rem' }} />
+
           </div>
         ) : (
           <InfiniteCarousel
@@ -87,13 +88,19 @@ export default class Carrousel extends React.Component {
             slidesToScroll={4}
             slidesToShow={4}
             scrollOnDevice={true}
+            // autoCycle={true}
+            // cycleInterval={2200}
           >
             {this.state.objects
               .filter((object) => {
-                return object.primaryImageSmall !== "";
+                return object.primaryImageSmall !== '';
               })
               .map((object) => (
-                <div key={object.objectID} className="container-image">
+                <div 
+                key={object.objectID} 
+                className="container-image"
+                onClick={(e)=>this.handleClick(e.target.key)}
+                >
                   <img
                     className="carrousel-img"
                     alt={object.objectName}

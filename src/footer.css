@@ -38,6 +38,7 @@ form button{
   border: none;
   background: rgb(50,50,50);
   color: rgb(237,237,247);
+  cursor: pointer;
   bottom: 0;
 }
 form div:last-child{

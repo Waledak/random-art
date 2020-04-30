@@ -6,41 +6,13 @@ import Carrousel from "./Carrousel";
 import { Navbar } from "./navbar";
 import { Footer } from "./Footer";
 
-const alphabet = [
-  "a",
-  "b",
-  "c",
-  "d",
-  "e",
-  "f",
-  "g",
-  "h",
-  "i",
-  "j",
-  "k",
-  "l",
-  "m",
-  "n",
-  "o",
-  "p",
-  "q",
-  "r",
-  "s",
-  "t",
-  "u",
-  "v",
-  "w",
-  "x",
-  "y",
-  "z",
-];
-
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       departement: "",
       period: "",
+      imageSelect: "",
       objectToDisplay: {},
       departementAndPeriodIds: {},
       loading1: false,
@@ -49,21 +21,27 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.handleRandom();
+    this.setState({ loading2: true });
+    axios
+      .get(
+        `https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&q=b`
+      )
+      .then((res) => res.data)
+      .then((res) => {
+        this.setState({ departementAndPeriodIds: res, loading1: false });
+      })
+      .then(() => this.handleRandom());
   }
   handleDepartement = (e) => {
     this.setState({ departement: e.target.value, loading1: true });
     const splitDates = this.state.period.split(" ");
-    const randomLetter = alphabet[Math.floor(Math.random() * 26)];
     axios
       .get(
         `https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true${
           this.state.period !== ""
             ? `&dateBegin=${splitDates[0]}&dateEnd=${splitDates[1]}`
             : ""
-        }${
-          e.target.value !== "" ? `&departmentId=${e.target.value}` : ""
-        }&q=${randomLetter}`
+        }${e.target.value !== "" ? `&departmentId=${e.target.value}` : ""}&q=b`
       )
       .then((res) => res.data)
       .then((res) => {
@@ -74,7 +52,6 @@ class App extends React.Component {
   handlePeriod = (e) => {
     this.setState({ period: e.target.value, loading1: true });
     const splitDates = e.target.value.split(" ");
-    const randomLetter = alphabet[Math.floor(Math.random() * 26)];
     axios
       .get(
         `https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true${
@@ -85,7 +62,7 @@ class App extends React.Component {
           this.state.departement !== ""
             ? `&departmentId=${this.state.departement}`
             : ""
-        }&q=${randomLetter}`
+        }&q=b`
       )
       .then((res) => res.data)
       .then((res) => {
@@ -94,28 +71,8 @@ class App extends React.Component {
   };
 
   handleRandom = () => {
-    this.setState({ loading2: true });
-    if (
-      (this.state.departement === "" && this.state.period === "") ||
-      !this.state.departementAndPeriodIds.objectIDs
-    ) {
-      const randomId = Math.floor(Math.random() * 300000);
-      axios
-        .get(
-          `https://collectionapi.metmuseum.org/public/collection/v1/objects/${randomId}`
-        )
-        .then((res) => res.data)
-        .then((res) => {
-          if (res.primaryImageSmall === "") {
-            this.handleRandom();
-          } else {
-            this.setState({ objectToDisplay: res, loading2: false });
-          }
-        })
-        .catch(() => {
-          this.handleRandom();
-        });
-    } else {
+    if (this.state.departementAndPeriodIds.objectIDs) {
+      this.setState({ loading2: true });
       const random = Math.floor(
         Math.random() * this.state.departementAndPeriodIds.total
       );
@@ -129,6 +86,19 @@ class App extends React.Component {
           this.setState({ objectToDisplay: res, loading2: false });
         });
     }
+  };
+
+  handleClick = (imageSelect) => {
+    const id = this.state.imageSelect.objectIDs;
+    this.setState({ imageSelect: imageSelect });
+    axios
+      .get(
+        `https://collectionapi.metmuseum.org/public/collection/v1/objects/${id}`
+      )
+      .then((res) => res.data)
+      .then((res) => {
+        this.setState({ objectToDisplay: res });
+      });
   };
 
   render() {
@@ -148,7 +118,10 @@ class App extends React.Component {
           objectToDisplay={this.state.objectToDisplay}
           loading2={this.state.loading2}
         />
-        <Carrousel />
+        <Carrousel
+          handleClick={this.handleClick}
+          imageSelect={this.state.imageSelect}
+        />
         <Footer />
       </div>
     );
