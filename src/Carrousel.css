@@ -4,20 +4,34 @@
     width: 70%;
     margin-right: auto;
     margin-left: auto;
-    margin-top: 100px;
-    margin-bottom: 100px;
+    margin-top: 5%;
+    margin-bottom: 5%;
 }
 
 .InfiniteCarouselSlide {
-    height: 100%!important;
+    width: 100%;
+    margin: auto;
+}
+
+.InfiniteCarouselDots {
+    margin: 0;
+}
+
+
+.container-image {
+    display: block;
+    margin-top: 50%;
+    transform: translateY(-15%);
+    bottom:initial;
 }
 
 .carrousel-img {
     transition: all 0.3s ease;
-    height: 200px;
+    height: auto;
+    max-width: 200px;
+    width: 100%;
     opacity: 0.6;
     margin-top: auto;
-    margin-bottom: auto;
 }
 
 .carrousel-img:hover {
@@ -33,6 +47,7 @@
     border-right: solid #e4002b;
     border-bottom: solid #e4002b;
 }
+
 
 .InfiniteCarouselDotIcon {
     background-color: black;

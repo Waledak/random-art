@@ -1,11 +1,16 @@
 import React from "react";
+import BodyLoading from "./BodyLoading";
 import "./DisplayArt.css";
 
-const DisplayArt = ({ objectToDisplay }) => {
+const DisplayArt = ({ objectToDisplay, loading2 }) => {
   return (
-    <div className="container-art">
+    <article className="container-art">
       <div className="container-img">
-        <img src={objectToDisplay.primaryImageSmall} alt="" />
+        {loading2 ? (
+          <BodyLoading color={"#e4002b"} size={"large"} />
+        ) : (
+          <img src={objectToDisplay.primaryImageSmall} alt="" />
+        )}
       </div>
       <div className="container-table">
         <table>
@@ -17,27 +22,51 @@ const DisplayArt = ({ objectToDisplay }) => {
           <tbody>
             <tr>
               <td>title:</td>
-              <td>{objectToDisplay.title===""?"Unknown data":objectToDisplay.title}</td>
+              <td>
+                {objectToDisplay.title === ""
+                  ? "Unknown data"
+                  : objectToDisplay.title}
+              </td>
             </tr>
             <tr>
               <td>Date:</td>
-              <td>{objectToDisplay.objectDate===""?"Unknown data":objectToDisplay.objectDate}</td>
+              <td>
+                {objectToDisplay.objectDate === ""
+                  ? "Unknown data"
+                  : objectToDisplay.objectDate}
+              </td>
             </tr>
             <tr>
               <td>Culture: </td>
-              <td>{objectToDisplay.culture===""?"Unknown data":objectToDisplay.culture}</td>
+              <td>
+                {objectToDisplay.culture === ""
+                  ? "Unknown data"
+                  : objectToDisplay.culture}
+              </td>
             </tr>
             <tr>
               <td>Size: </td>
-              <td>{objectToDisplay.dimensions===""?"Unknown data":objectToDisplay.dimensions}</td>
+              <td>
+                {objectToDisplay.dimensions === ""
+                  ? "Unknown data"
+                  : objectToDisplay.dimensions}
+              </td>
             </tr>
             <tr>
               <td>Classification: </td>
-              <td>{objectToDisplay.classification===""?"Unknown data":objectToDisplay.classification}</td>
+              <td>
+                {objectToDisplay.classification === ""
+                  ? "Unknown data"
+                  : objectToDisplay.classification}
+              </td>
             </tr>
             <tr>
               <td>Period: </td>
-              <td>{objectToDisplay.period===""?"Unknown data":objectToDisplay.period}</td>
+              <td>
+                {objectToDisplay.period === ""
+                  ? "Unknown data"
+                  : objectToDisplay.period}
+              </td>
             </tr>
           </tbody>
         </table>
@@ -50,31 +79,40 @@ const DisplayArt = ({ objectToDisplay }) => {
           <tbody>
             <tr>
               <td>Name:</td>
-              <td> {objectToDisplay.artistDisplayName===""?"Unknown data":objectToDisplay.artistDisplayName}</td>
+              <td>
+                {" "}
+                {objectToDisplay.artistDisplayName === ""
+                  ? "Unknown data"
+                  : objectToDisplay.artistDisplayName}
+              </td>
             </tr>
             <tr>
               <td>Nationality:</td>
-              <td>{objectToDisplay.artistNationality===""?"Unknown data":objectToDisplay.artistNationality}</td>
+              <td>
+                {objectToDisplay.artistNationality === ""
+                  ? "Unknown data"
+                  : objectToDisplay.artistNationality}
+              </td>
             </tr>
             <tr>
               <td>Date (Birth-Death): </td>
               <td>
-                {
-                  objectToDisplay.artistBeginDate!=="" && objectToDisplay.artistEndDate!==""
-                  ?objectToDisplay.artistBeginDate+" - "+objectToDisplay.artistEndDate
-                  :objectToDisplay.artistBeginDate!==""
-                  ?objectToDisplay.artistBeginDate
-                  :objectToDisplay.artistEndDate!==""
-                  ?objectToDisplay.artistEndDate
-                  :"Unknown data"
-
-                }
+                {objectToDisplay.artistBeginDate !== "" &&
+                objectToDisplay.artistEndDate !== ""
+                  ? objectToDisplay.artistBeginDate +
+                    " - " +
+                    objectToDisplay.artistEndDate
+                  : objectToDisplay.artistBeginDate !== ""
+                  ? objectToDisplay.artistBeginDate
+                  : objectToDisplay.artistEndDate !== ""
+                  ? objectToDisplay.artistEndDate
+                  : "Unknown data"}
               </td>
             </tr>
           </tbody>
         </table>
       </div>
-    </div>
+    </article>
   );
 };
 

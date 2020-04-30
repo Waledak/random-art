@@ -1,16 +1,16 @@
-import React from 'react';
-import InfiniteCarousel from 'react-leaf-carousel';
-import metAPI from './lib/metAPI';
-import './Carrousel.css';
-import { Spinner } from 'reactstrap';
+import React from "react";
+import InfiniteCarousel from "react-leaf-carousel";
+import metAPI from "./lib/metAPI";
+import "./Carrousel.css";
+import { Spinner } from "reactstrap";
 
 export default class Carrousel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      departmentId: '4',
+      departmentId: "7",
       objects: [],
-      ImageSmall: '',
+      ImageSmall: "",
       isLoading: true,
     };
     this.loadObjectId = this.loadObjectId.bind(this);
@@ -56,12 +56,12 @@ export default class Carrousel extends React.Component {
   //   });
 
   render() {
-    console.log('finaleuh', this.state.objects);
     return (
       <div className="carrousel">
         {this.state.isLoading ? (
           <div>
             <Spinner style={{ width: '3rem', height: '3rem' }} />
+
           </div>
         ) : (
           <InfiniteCarousel
@@ -88,8 +88,8 @@ export default class Carrousel extends React.Component {
             slidesToScroll={4}
             slidesToShow={4}
             scrollOnDevice={true}
-            autoCycle={true}
-            cycleInterval={2200}
+            // autoCycle={true}
+            // cycleInterval={2200}
           >
             {this.state.objects
               .filter((object) => {
@@ -99,6 +99,7 @@ export default class Carrousel extends React.Component {
                 <div 
                 key={object.objectID} 
                 className="container-image"
+                onClick={(e)=>this.handleClick(e.target.key)}
                 >
                   <img
                     className="carrousel-img"
