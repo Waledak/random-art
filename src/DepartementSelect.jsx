@@ -10,35 +10,26 @@ const DepartementSelect = ({ departement, handleDepartement }) => {
           value={departement}
           id="pet-select"
         >
-          <option value="">choose a departement</option>
-          <option value="American Decorative Arts">
-            American Decorative Arts
-          </option>
-          <option value="Ancient Near Eastern Art">
-            Ancient Near Eastern Art
-          </option>
-          <option value="Arms and Armor">Arms and Armor</option>
-          <option value="Arts of Africa, Oceania, and the Americas">
-            Arts of Africa, Oceania, and the Americas
-          </option>
-          <option value="Asian Art">Asian Art</option>
-          <option value="The Costume Institute">The Costume Institute</option>
-          <option value="Drawings and Prints">Drawings and Prints</option>
-          <option value="Egyptian Art">Egyptian Art</option>
-          <option value="European Paintings">European Paintings</option>
-          <option value="European Sculpture and Decorative Arts">
-            European Sculpture and Decorative Arts
-          </option>
-          <option value="Greek and Roman Art">Greek and Roman Art</option>
-          <option value="Islamic Art">Islamic Art</option>
-          <option value="The Robert Lehman Collection">
-            The Robert Lehman Collection
-          </option>
-          <option value="The Libraries">The Libraries</option>
-          <option value="Medieval Art">Medieval Art</option>
-          <option value="Musical Instruments">Musical Instruments</option>
-          <option value="Photographs">Photographs</option>
-          <option value="Modern Art">Modern Art</option>
+          <option value="">Choose a category</option>
+          <option value="1">American Decorative Arts</option>
+          <option value="3">Ancient Near Eastern Art</option>
+          <option value="4">Arms and Armor</option>
+          <option value="5">Arts of Africa, Oceania, and the Americas</option>
+          <option value="6">Asian Art</option>
+          <option value="7">The Cloisters</option>
+          <option value="8">The Costume Institute</option>
+          <option value="9">Drawings and Prints</option>
+          <option value="10">Egyptian Art</option>
+          <option value="11">European Paintings</option>
+          <option value="12">European Sculpture and Decorative Arts</option>
+          <option value="13">Greek and Roman Art</option>
+          <option value="14">Islamic Art</option>
+          <option value="15">The Robert Lehman Collection</option>
+          <option value="16">The Libraries</option>
+          <option value="17">Medieval Art</option>
+          <option value="18">Musical Instruments</option>
+          <option value="19">Photographs</option>
+          <option value="21">Modern Art</option>
         </select>
       </label>
     </div>

@@ -1,4 +1,8 @@
-import React from 'react';
-import { SemipolarLoading } from 'react-loadingg';
-const BodyLoading = () => <article><SemipolarLoading size={"large"} color={"#e4002b"}/></article>;
+import React from "react";
+import { SemipolarLoading } from "react-loadingg";
+const BodyLoading = (props) => (
+  <article>
+    <SemipolarLoading size={props.size} color={props.color} />
+  </article>
+);
 export default BodyLoading;
