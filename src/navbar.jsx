@@ -2,6 +2,7 @@ import React from "react";
 import "./navbar.css";
 import DepartementSelect from "./DepartementSelect";
 import PeriodSelect from "./PeriodSelect";
+import BodyLoading from "./BodyLoading";
 
 export const Navbar = ({
   handleRandom,
@@ -17,13 +18,8 @@ export const Navbar = ({
       <div>
         <img src="./LogoBlanc2.png" alt="Logo du site" />
       </div>
+      {loading1 && <BodyLoading color={"white"} size={"small"} />}
       <div>
-        <div class={loading1 ? "lds-ring" : ""}>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
         <DepartementSelect
           departement={departement}
           handleDepartement={handleDepartement}

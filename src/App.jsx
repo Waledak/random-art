@@ -4,7 +4,6 @@ import "./App.css";
 import DisplayArt from "./Display-art";
 import Carrousel from "./Carrousel";
 import { Navbar } from "./navbar";
-import BodyLoading from "./BodyLoading";
 
 // const artData = {
 //   objectID: 45734,
@@ -92,23 +91,23 @@ class App extends React.Component {
     this.state = {
       departement: "",
       period: "",
-      oldObjectDisplay:{},
+      // oldObjectDisplay: {},
       objectToDisplay: {},
       departementAndPeriodIds: {},
       loading1: false,
+      loading2: false,
     };
   }
-  componentDidUpdate(){
-    if(this.state.oldObjectDisplay!==this.state.objectToDisplay){
-      this.setState({oldObjectDisplay: this.state.objectToDisplay})
-    }
-  }
-  componentDidMount(){
-    this.handleRandom()
+  // componentDidUpdate() {
+  //   if (this.state.oldObjectDisplay !== this.state.objectToDisplay) {
+  //     this.setState({ oldObjectDisplay: this.state.objectToDisplay });
+  //   }
+  // }
+  componentDidMount() {
+    this.handleRandom();
   }
   handleDepartement = (e) => {
-    this.setState({ loading1: true });
-    this.setState({ departement: e.target.value });
+    this.setState({ departement: e.target.value, loading1: true });
     const splitDates = this.state.period.split(" ");
     axios
       .get(
@@ -116,7 +115,7 @@ class App extends React.Component {
           this.state.period !== ""
             ? `&dateBegin=${splitDates[0]}&dateEnd=${splitDates[1]}`
             : ""
-        }&departmentId=${e.target.value}&q=b`
+        }${e.target.value !== "" ? `&departmentId=${e.target.value}` : ""}&q=b`
       )
       .then((res) => res.data)
       .then((res) => {
@@ -125,16 +124,19 @@ class App extends React.Component {
   };
 
   handlePeriod = (e) => {
-    this.setState({ loading1: true });
-    this.setState({ period: e.target.value });
+    this.setState({ period: e.target.value, loading1: true });
     const splitDates = e.target.value.split(" ");
     axios
       .get(
         `https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true${
+          e.target.value !== ""
+            ? `&dateBegin=${splitDates[0]}&dateEnd=${splitDates[1]}`
+            : ""
+        }${
           this.state.departement !== ""
             ? `&departementId=${this.state.departement}`
             : ""
-        }&dateBegin=${splitDates[0]}&dateEnd=${splitDates[1]}&q=b`
+        }&q=b`
       )
       .then((res) => res.data)
       .then((res) => {
@@ -143,6 +145,7 @@ class App extends React.Component {
   };
 
   handleRandom = () => {
+    this.setState({ loading2: true });
     if (
       (this.state.departement === "" && this.state.period === "") ||
       !this.state.departementAndPeriodIds.objectIDs
@@ -157,8 +160,7 @@ class App extends React.Component {
           if (res.primaryImageSmall === "") {
             this.handleRandom();
           } else {
-            console.log("okk");
-            this.setState({ objectToDisplay: res });
+            this.setState({ objectToDisplay: res, loading2: false });
           }
         })
         .catch(() => {
@@ -175,8 +177,7 @@ class App extends React.Component {
         )
         .then((res) => res.data)
         .then((res) => {
-          console.log("wesh");
-          this.setState({ objectToDisplay: res });
+          this.setState({ objectToDisplay: res, loading2: false });
         });
     }
   };
@@ -194,10 +195,10 @@ class App extends React.Component {
             {...this.state}
           />
         </header>
-        {this.state.oldObjectDisplay!==this.state.objectToDisplay?
-          <BodyLoading />
-          :<DisplayArt objectToDisplay={this.state.objectToDisplay} />
-        }
+        <DisplayArt
+          objectToDisplay={this.state.objectToDisplay}
+          loading2={this.state.loading2}
+        />
         <Carrousel />
         <footer></footer>
       </div>
