@@ -16,18 +16,18 @@ export const Footer = () =>{
        setMail(mail);
        Swal.fire({
         icon: 'success',
-        title: 'Your work has been saved',
+        title: 'Thanks for you\'r subscribe! :)',
         showConfirmButton: false,
-        timer: 1000
+        timer: 1200
       })
      })
      .catch(() => {
        setResult({ success: false});
        Swal.fire({
-        icon: 'success',
-        title: 'Thanks for you\'r subscribe!',
+        icon: 'error',
+        title: 'Oops! Something went wrong, please try again later',
         showConfirmButton: false,
-        timer: 1000
+        timer: 1500
       })
    });
   }
